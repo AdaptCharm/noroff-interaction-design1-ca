@@ -1,0 +1,17 @@
+{
+  "title": "Home",
+  "titleTemplate": "%s | Snug selling baby carriers",
+  "defaultTitle": "Snug selling baby carriers",
+  "description": "The ID1 Course Assignment.",
+  "openGraph": {
+    "type": "website",
+    "locale": "en",
+    "url": "https://snug-selling-baby-carriers.vercel.app",
+    "site_name": "Snug selling baby carriers"
+  },
+  "twitter": {
+    "handle": "@snugsellingbabycarriers",
+    "site": "@snugsellingbabycarriers",
+    "cardType": "summary_large_image"
+  }
+}
