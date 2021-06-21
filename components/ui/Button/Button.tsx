@@ -19,9 +19,9 @@ const Button: FC<Props> = ({
   return (
     <Component
       className={cn(
-        'w-full flex items-center justify-center py-3 px-5 border rounded-md transition ease-default text-base focus:outline-none focus:ring-transparent',
+        'inline-flex items-center justify-center py-3 px-5 border rounded-md transition ease-default text-base focus:outline-none focus:ring-transparent',
         {
-          'text-white bg-black border-black hover:bg-transparent hover:text-black':
+          'text-white dark:text-black bg-black dark:bg-white border-black dark:border-white hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white':
             variant === 'primary',
           'text-gray-500 bg-white border-bg-gray-200 hover:border-black hover:text-black':
             variant === 'secondary',

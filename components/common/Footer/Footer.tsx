@@ -11,7 +11,8 @@ const Footer: FC = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <p className="text-black dark:text-white">
-            &copy; {new Date().getFullYear()} Portfolio | Jamie Isaksen
+            &copy; {new Date().getFullYear()} Snug selling baby carriers | Jamie
+            Isaksen
           </p>
         </div>
       </div>

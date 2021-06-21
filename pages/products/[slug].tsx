@@ -1,26 +1,53 @@
-import type {
-  GetStaticPaths,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from 'next'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import { GetStaticProps, GetStaticPaths } from 'next'
+
+import { Product } from '@config/types'
+import { productsData } from '@config/products'
+
 import { NextSeo } from 'next-seo'
 
+import { ProductView } from '@components/product'
 import { Layout } from '@components/common'
-import { Alert } from '@components/ui'
 
-const Slug = () => {
-  //const { query } = useRouter()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = productsData.map((product) => ({
+    params: { slug: product.slug.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  try {
+    const slug = params?.slug
+    const product = productsData.find((data) => data.slug === String(slug))
+
+    return { props: { product } }
+  } catch (err) {
+    return { props: { errors: err.message } }
+  }
+}
+
+type Props = {
+  product?: Product
+  errors?: string
+}
+
+const Slug = ({ product, errors }: Props) => {
+  if (errors) {
+    return (
+      <>
+        <NextSeo title="Error" />
+        <p>
+          <span style={{ color: 'red' }}>Error:</span> {errors}
+        </p>
+      </>
+    )
+  }
 
   return (
     <>
-      <NextSeo
-        title="Blog"
-        description="Pulvinar laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at."
-      />
-      <h1>Test</h1>
+      <NextSeo title={`${product ? product.name : 'Product'}`} />
+      {product && <ProductView product={product} />}
     </>
   )
 }
